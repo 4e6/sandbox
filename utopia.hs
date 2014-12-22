@@ -1,5 +1,3 @@
-module Utopia where
-
 readCases :: (Integral a, Read a) => IO a
 readCases = readLn
 
