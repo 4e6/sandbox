@@ -1,5 +1,13 @@
+import Control.Monad
+
 readCases :: (Integral a, Read a) => IO a
 readCases = readLn
+
+readInput :: Int -> IO [Int]
+readInput n = replicateM n readLn
+
+readInput_ :: (Integral a, Read a) => a -> IO [a]
+readInput_ n = sequence $ map (\_ -> readCases) [1..n]
 
 growCycle :: Integral a => a -> a -> a
 growCycle c h
@@ -14,6 +22,7 @@ grow c h = grown c 1 h where
 
 main :: IO ()
 main = do
-  n <- readCases
-  let r = n + 1
-  print r
+  n  <- readLn
+  cs <- readInput n
+  let hs = map (\c -> grow c 1) cs
+  sequence_ $ map print hs
