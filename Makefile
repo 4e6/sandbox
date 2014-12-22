@@ -1,7 +1,7 @@
-all: utopian-tree
+all: UtopianTree
 
-utopian-tree:
-	ghc -o utopian-tree UtopianTree.hs
+UtopianTree:
+	ghc --make UtopianTree.hs
 
 clean:
-	rm *.o *.hi utopian-tree
+	rm *.o *.hi UtopianTree
