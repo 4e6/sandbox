@@ -1,4 +1,4 @@
-all: AlternatingCharacters FindDigits IsFibo MaximizingXOR UtopianTree
+all: AlternatingCharacters FindDigits IsFibo LoveLetterMystery MaximizingXOR UtopianTree
 
 AlternatingCharacters:
 	ghc --make AlternatingCharacters.hs
@@ -9,6 +9,9 @@ FindDigits:
 IsFibo:
 	ghc --make IsFibo.hs
 
+LoveLetterMystery:
+	ghc --make LoveLetterMystery.hs
+
 MaximizingXOR:
 	ghc --make MaximizingXOR.hs
 
@@ -16,4 +19,4 @@ UtopianTree:
 	ghc --make UtopianTree.hs
 
 clean:
-	rm *.o *.hi AlternatingCharacters FindDigits IsFibo MaximizingXOR UtopianTree
+	rm *.o *.hi AlternatingCharacters FindDigits IsFibo LoveLetterMystery MaximizingXOR UtopianTree

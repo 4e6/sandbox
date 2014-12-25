@@ -15,5 +15,24 @@ isFib (f:fs) n =
 
 digits :: Integral a => a -> [a]
 digits 0 = []
-digits x = let (q, r) = quotRem x 10 in
-  r : digits q
+digits x = let (q, r) = quotRem x 10
+           in r : digits q
+
+mid :: [a] -> Maybe a
+mid [] = Nothing
+mid xs = if even $ length xs then Nothing else Just $ xs !! (half $ length xs)
+  where half x = quot x 2
+
+splitHalf :: [a] -> ([a], [a])
+splitHalf xs = splitAt (half $ length xs) xs
+  where half x = quot x 2
+
+splitHalfEq :: [a] -> ([a], [a])
+splitHalfEq s =
+  let (l, r) = splitHalf s
+      size = length s
+  in if even size then (l, r) else (l, tail r)
+
+isPalindrome :: Eq a => [a] -> Bool
+isPalindrome xs = let (l, r) = splitHalfEq xs
+                  in l == reverse r
