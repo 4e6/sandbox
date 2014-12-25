@@ -12,3 +12,8 @@ fibn n = (fibn $ n - 1) + (fibn $ n - 2)
 isFib :: Integral a => [a] -> a -> Bool
 isFib (f:fs) n =
   if n > f then isFib fs n else n == f
+
+digits :: Integral a => a -> [a]
+digits 0 = []
+digits x = let (q, r) = quotRem x 10 in
+  r : digits q
