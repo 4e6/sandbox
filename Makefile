@@ -1,22 +1,32 @@
-all: AlternatingCharacters FindDigits IsFibo LoveLetterMystery MaximizingXOR UtopianTree
+OPTS = $(OPTS)
+
+# to enable profiling, execute ./Program +RTS -p
+ifdef PROFILE
+  OPTS += -prof -fprof-auto -rtsopts
+endif
+
+all: AlternatingCharacters AngryChildren FindDigits IsFibo LoveLetterMystery MaximizingXOR UtopianTree
 
 AlternatingCharacters:
-	ghc --make AlternatingCharacters.hs
+	ghc $(OPTS) AlternatingCharacters.hs
+
+AngryChildren:
+	ghc $(OPTS) AngryChildren.hs
 
 FindDigits:
-	ghc --make FindDigits.hs
+	ghc $(OPTS) FindDigits.hs
 
 IsFibo:
-	ghc --make IsFibo.hs
+	ghc $(OPTS) IsFibo.hs
 
 LoveLetterMystery:
-	ghc --make LoveLetterMystery.hs
+	ghc $(OPTS) LoveLetterMystery.hs
 
 MaximizingXOR:
-	ghc --make MaximizingXOR.hs
+	ghc $(OPTS) MaximizingXOR.hs
 
 UtopianTree:
-	ghc --make UtopianTree.hs
+	ghc $(OPTS) UtopianTree.hs
 
 clean:
-	rm *.o *.hi AlternatingCharacters FindDigits IsFibo LoveLetterMystery MaximizingXOR UtopianTree
+	rm *.o *.hi AlternatingCharacters AngryChildren FindDigits IsFibo LoveLetterMystery MaximizingXOR UtopianTree

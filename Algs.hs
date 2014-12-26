@@ -36,3 +36,13 @@ splitHalfEq s =
 isPalindrome :: Eq a => [a] -> Bool
 isPalindrome xs = let (l, r) = splitHalfEq xs
                   in l == reverse r
+
+-- obscenely inefficient
+sliding :: Int -> [a] -> [[a]]
+sliding _ [] = []
+sliding n bs@(_:xs) = take n bs : sliding n xs
+
+sliding_ :: Int -> Int -> [a] -> [[a]]
+sliding_ _ _ [] = []
+sliding_ 0 _ _  = []
+sliding_ i n bs@(x:xs) = [x,bs !! (n-1)] : sliding_ (i-1) n xs
