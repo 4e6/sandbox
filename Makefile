@@ -1,11 +1,12 @@
-OPTS = $(OPTS)
+OPTS = --make
+EXES = AlternatingCharacters AngryChildren FindDigits GameOfThrones1 IsFibo LoveLetterMystery MaximizingXOR UtopianTree
 
 # to enable profiling, execute ./Program +RTS -p
 ifdef PROFILE
   OPTS += -prof -fprof-auto -rtsopts
 endif
 
-all: AlternatingCharacters AngryChildren FindDigits IsFibo LoveLetterMystery MaximizingXOR UtopianTree
+all: $(EXES)
 
 AlternatingCharacters:
 	ghc $(OPTS) AlternatingCharacters.hs
@@ -15,6 +16,9 @@ AngryChildren:
 
 FindDigits:
 	ghc $(OPTS) FindDigits.hs
+
+GameOfThrones1:
+	ghc $(OPTS) GameOfThrones1.hs
 
 IsFibo:
 	ghc $(OPTS) IsFibo.hs
@@ -29,4 +33,4 @@ UtopianTree:
 	ghc $(OPTS) UtopianTree.hs
 
 clean:
-	rm *.o *.hi AlternatingCharacters AngryChildren FindDigits IsFibo LoveLetterMystery MaximizingXOR UtopianTree
+	rm *.o *.hi $(EXES)
