@@ -46,3 +46,12 @@ sliding_ :: Int -> Int -> [a] -> [[a]]
 sliding_ _ _ [] = []
 sliding_ 0 _ _  = []
 sliding_ i n bs@(x:xs) = [x,bs !! (n-1)] : sliding_ (i-1) n xs
+
+fixedWindow :: Int -> [a] -> [[a]]
+fixedWindow _ [] = []
+fixedWindow n xs = let (l,r) = splitAt n xs
+                   in l : fixedWindow n r
+
+combinations :: (a -> a -> a) -> [a] -> [a]
+combinations _ []     = []
+combinations f (x:xs) = map (f x) xs ++ combinations f xs
