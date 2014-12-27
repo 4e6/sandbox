@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+N=$1
+M=$2
+K=$3
+
+echo "$1 $2"
+for abc in $(seq 1 $M); do
+  a="$(shuf -i  1-$N -n1)"
+  b="$(shuf -i $a-$N -n1)"
+  k=$(shuf -i 0-$K -n1)
+  echo "$a $b $k"
+done

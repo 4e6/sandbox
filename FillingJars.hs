@@ -5,25 +5,28 @@ import qualified Utils as U (readSeq, readPair)
 
 type Op = (Int, Int, Int)
 
-type Jar s = STArray s Int Int
+type Jar s = STUArray s Int Int
 
 readOps :: Int -> IO [Op]
 readOps n = replicateM n $ fmap parse U.readSeq
   where parse (a:b:k:_) = (a,b,k)
 
 runOps :: [Op] -> Jar s -> ST s ()
-runOps xs jars = forM_ xs $ flip runOp jars
+runOps xs jars = forM_ xs $ runOp jars
 
-runOp :: Op -> Jar s -> ST s ()
-runOp (a,b,v) jars = let ids = [a..b]
-                     in do xs <- forM ids (readArray jars)
+runOp :: Jar s -> Op -> ST s ()
+runOp jars (a,b,v) = let ids = [a..b]
+                     in do xs <- forM ids $ readArray jars
                            let vs = map (+v) xs
-                           forM_ (zip ids vs) (uncurry $ writeArray jars)
+                           let zp = zip ids vs
+                           forM_ zp $ uncurry $ writeArray jars
 
 average :: Int -> Jar s -> ST s Double
 average n jars = do
   es <- getElems jars
-  return $ (fromIntegral $ sum es) / (fromIntegral n)
+  let s' = sum es
+      a' = (fromIntegral s') / (fromIntegral n)
+  return a'
 
 main :: IO ()
 main = do
