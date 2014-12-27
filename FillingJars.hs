@@ -1,33 +1,36 @@
-import Control.Monad (replicateM)
-import qualified Data.HashMap as M
+import Control.Monad
+import Control.Monad.ST
+import Data.Array.ST
 import qualified Utils as U (readSeq, readPair)
 
 type Op = (Int, Int, Int)
 
-type Jars = M.Map Int Integer
+type Jar s = STArray s Int Int
 
 readOps :: Int -> IO [Op]
 readOps n = replicateM n $ fmap parse U.readSeq
   where parse (a:b:k:_) = (a,b,k)
 
-runOps :: [Op] -> Jars
-runOps ops = runOps_ ops M.empty
+runOps :: [Op] -> Jar s -> ST s ()
+runOps xs jars = forM_ xs $ flip runOp jars
 
-runOps_ :: [Op] -> Jars -> Jars
-runOps_ []     m = m
-runOps_ (x:xs) m = runOps_ xs $ runOp x m
+runOp :: Op -> Jar s -> ST s ()
+runOp (a,b,v) jars = let ids = [a..b]
+                     in do xs <- forM ids (readArray jars)
+                           let vs = map (+v) xs
+                           forM_ (zip ids vs) (uncurry $ writeArray jars)
 
-runOp :: Op -> Jars -> Jars
-runOp (a,b,v) jars = foldl put jars [a..b]
-  where put m k = M.insertWith (+) k (toInteger v) m
-
-msum :: Integral a => M.Map k a -> a
-msum = M.fold (+) 0
+average :: Int -> Jar s -> ST s Double
+average n jars = do
+  es <- getElems jars
+  return $ (fromIntegral $ sum es) / (fromIntegral n)
 
 main :: IO ()
 main = do
   (n,m) <- U.readPair
   ops   <- readOps m
-  let jars = runOps ops
-  let avg  = fromIntegral (msum jars) / (fromIntegral n)
+  let avg = runST $ do
+        jars <- newArray (1,n) 0
+        runOps ops jars
+        average n jars
   print $ truncate avg
