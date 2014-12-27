@@ -14,6 +14,10 @@ readInput = readLn >>= readLines
 readStringInput :: IO [String]
 readStringInput = readLn >>= getLines
 
-readPairInt :: IO (Int, Int)
-readPairInt = fmap (parse . words) getLine
-  where parse (a:b:_) = (read a, read b)
+readSeq :: Read a => IO [a]
+readSeq = fmap (parse . words) getLine
+  where parse = map read
+
+readPair :: Read a => IO (a, a)
+readPair = fmap parse readSeq
+  where parse (a:b:_) = (a, b)

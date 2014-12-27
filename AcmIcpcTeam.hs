@@ -4,7 +4,7 @@ import Data.Word (Word)
 import Numeric (showIntAtBase)
 import Control.Monad (replicateM)
 import Algs (combinations, fixedWindow)
-import Utils (readPairInt)
+import Utils (readPair)
 
 type Bit = (Int, Bool)
 
@@ -62,7 +62,7 @@ showIInt = concat . map showBin . bits
 
 main :: IO ()
 main = do
-  (n,m) <- readPairInt
+  (n,m) <- readPair
   xs    <- replicateM n readBinaryString
   let coms = bitCombinations xs
   let best = maximum coms
