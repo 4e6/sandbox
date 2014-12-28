@@ -1,5 +1,5 @@
-import Utils
-import Algs
+import Util.Alg
+import Util.IO
 
 data IF = IsFibo | IsNotFibo deriving (Show)
 

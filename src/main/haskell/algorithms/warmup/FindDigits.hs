@@ -1,6 +1,6 @@
 import Data.Maybe
-import Algs
-import Utils
+import Util.Alg
+import Util.IO
 
 divM :: Integral a => a -> a -> Maybe a
 divM _ 0         = Nothing

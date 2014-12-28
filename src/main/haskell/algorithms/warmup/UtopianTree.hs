@@ -1,4 +1,4 @@
-import Utils
+import Util.IO
 
 growCycle :: Integral a => a -> a -> a
 growCycle c h

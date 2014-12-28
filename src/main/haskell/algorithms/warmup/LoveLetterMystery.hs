@@ -1,5 +1,5 @@
-import Algs
-import Utils
+import Util.Alg
+import Util.IO
 
 predLowerChar :: Char -> Char
 predLowerChar 'a' = 'a'

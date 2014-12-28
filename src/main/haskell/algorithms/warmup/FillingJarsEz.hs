@@ -1,6 +1,6 @@
 import Control.Monad
 import Data.Foldable (foldr')
-import qualified Utils as U
+import qualified Util.IO as U
 
 type Op = (Int, Int, Int)
 

@@ -1,7 +1,7 @@
 import Control.Monad
 import Control.Monad.ST
 import qualified Data.Vector.Unboxed.Mutable as UM
-import qualified Utils as U (readSeq, readPair)
+import qualified Util.IO as U (readSeq, readPair)
 
 type Op = (Int, Int, Int)
 

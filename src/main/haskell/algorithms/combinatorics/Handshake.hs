@@ -1,10 +1,5 @@
 import Control.Monad
-
-readLines :: Read a => Int -> IO [a]
-readLines n = replicateM n readLn
-
-readInput :: Read a => IO [a]
-readInput = readLn >>= readLines
+import Util.IO
 
 countHandshakes :: Int -> Int
 countHandshakes x = count' x 0

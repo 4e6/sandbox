@@ -3,8 +3,8 @@ import Data.Char (intToDigit)
 import Data.Word (Word)
 import Numeric (showIntAtBase)
 import Control.Monad (replicateM)
-import Algs (combinations, fixedWindow)
-import Utils (readPair)
+import Util.Alg (combinations, fixedWindow)
+import Util.IO (readPair)
 
 type Bit = (Int, Bool)
 
