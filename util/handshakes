@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# Generates input for Handshakes exercise
+
+T=${1:-10}
+N=${2:-1000000}
+
+echo $T
+
+shuf -i 0-$N -n$T

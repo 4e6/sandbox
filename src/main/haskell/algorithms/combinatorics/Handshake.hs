@@ -1,4 +1,3 @@
-import Control.Monad
 import Util.IO
 
 countHandshakes :: Int -> Int

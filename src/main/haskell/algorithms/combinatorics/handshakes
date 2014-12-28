@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-T=$1
-N=$2
-
-echo $T
-
-shuf -i 0-$N -n$T
