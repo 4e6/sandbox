@@ -1,5 +1,5 @@
 OPTS = --make
-EXES = AcmIcpcTeam AlternatingCharacters AngryChildren FillingJars FillingJarsLA FillingJarsVect FindDigits GameOfThrones1 IsFibo LoveLetterMystery MaximizingXOR UtopianTree
+EXES = AcmIcpcTeam AlternatingCharacters AngryChildren FillingJars FillingJarsEz FillingJarsLA FillingJarsVect FindDigits GameOfThrones1 IsFibo LoveLetterMystery MaximizingXOR UtopianTree
 
 # to enable profiling, execute ./Program +RTS -p
 ifdef PROFILE
@@ -19,6 +19,9 @@ AngryChildren:
 
 FillingJars:
 	ghc $(OPTS) FillingJars.hs
+
+FillingJarsEz:
+	ghc $(OPTS) FillingJarsEz.hs
 
 FillingJarsLA:
 	ghc $(OPTS) FillingJarsLA.hs
