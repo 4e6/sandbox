@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# Generates input for MaximumSubarray exercise
+
+T=${1:-10}
+N=${2:-100000}
+
+echo $T
+
+for ind in $(seq 1 $T); do
+  echo "$N"
+  seq -s ' ' 1 $N
+done
