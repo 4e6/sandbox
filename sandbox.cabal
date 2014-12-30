@@ -12,6 +12,12 @@ maintainer:          bushevdv@gmail.com
 build-type:          Simple
 cabal-version:       >=1.10
 
+library
+  hs-source-dirs:      src/main/haskell
+  build-depends:       base >=4.7 && <4.8
+  exposed-modules:     Util.Alg, Util.IO
+  ghc-options:         -Wall
+
 -- Warmup
 
 executable AcmIcpcTeam
@@ -93,6 +99,12 @@ executable UtopianTree
   default-language:    Haskell2010
 
 -- Combinatorics
+
+executable ConnectingTowns
+  main-is:             algorithms/combinatorics/ConnectingTowns.hs
+  hs-source-dirs:      src/main/haskell
+  build-depends:       base >=4.7 && <4.8
+  default-language:    Haskell2010
 
 executable Handshake
   main-is:             algorithms/combinatorics/Handshake.hs
