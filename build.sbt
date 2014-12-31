@@ -27,7 +27,7 @@ val noPublishingSettings = Seq(
 
 // projects
 
-lazy val root = Project("sandbox", file("."))
+lazy val core = project
   .settings(commonSettings: _*)
   .settings(formattingSettings: _*)
   .settings(
@@ -39,8 +39,13 @@ lazy val root = Project("sandbox", file("."))
       "org.scalacheck" %% "scalacheck"  % "1.12.1" % "test"))
 
 lazy val benchmark = project
-  .dependsOn(root)
+  .dependsOn(core)
   .settings(commonSettings: _*)
   .settings(formattingSettings: _*)
   .settings(jmhSettings: _*)
+  .settings(noPublishingSettings: _*)
+
+lazy val root = Project("sandbox", file("."))
+  .aggregate(core, benchmark)
+  .settings(commonSettings: _*)
   .settings(noPublishingSettings: _*)
