@@ -1,4 +1,4 @@
-import Util.IO
+import Sandbox.Util.IO
 
 removedDups :: Eq a => [a] -> Int
 removedDups as = removed 0 as where

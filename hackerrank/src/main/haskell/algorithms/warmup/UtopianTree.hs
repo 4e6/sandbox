@@ -1,4 +1,4 @@
-import Util.IO
+import Sandbox.Util.IO
 
 growCycle :: Integral a => a -> a -> a
 growCycle c h

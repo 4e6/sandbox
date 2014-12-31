@@ -1,4 +1,4 @@
-module Util.IO where
+module Sandbox.Util.IO where
 
 import Control.Monad
 

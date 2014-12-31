@@ -1,4 +1,4 @@
-module Util.Alg where
+module Sandbox.Util where
 
 fibs :: Integral a => [a]
 fibs = fib_rec 0 1 where

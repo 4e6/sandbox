@@ -1,5 +1,5 @@
 import qualified Data.List as L
-import Util.IO (readSeq)
+import Sandbox.Util.IO (readSeq)
 
 main :: IO ()
 main = do

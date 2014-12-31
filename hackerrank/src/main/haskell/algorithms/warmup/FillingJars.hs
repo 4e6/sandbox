@@ -1,7 +1,7 @@
 import Control.Monad
 import Control.Monad.ST
 import Data.Array.ST
-import qualified Util.IO as U (readSeq, readPair)
+import qualified Sandbox.Util.IO as U (readSeq, readPair)
 
 type Op = (Int, Int, Int)
 

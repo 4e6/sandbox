@@ -1,5 +1,5 @@
 import Control.Monad
-import qualified Util.IO as U
+import qualified Sandbox.Util.IO as U
 
 readCase' :: IO [Int]
 readCase' = getLine >> U.readSeq

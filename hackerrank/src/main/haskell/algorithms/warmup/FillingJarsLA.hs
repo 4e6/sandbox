@@ -2,7 +2,7 @@ import Control.Monad
 import Data.Foldable (foldl')
 import Numeric.LinearAlgebra.Data
 import Numeric.LinearAlgebra.HMatrix
-import qualified Util.IO as U
+import qualified Sandbox.Util.IO as U
 
 type Op = (Int, Int, Int)
 

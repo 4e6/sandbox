@@ -1,4 +1,4 @@
-import Util.IO
+import Sandbox.Util.IO
 
 countHandshakes :: Int -> Int
 countHandshakes x = count' x 0

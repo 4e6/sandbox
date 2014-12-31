@@ -1,5 +1,5 @@
-import Util.Alg
-import Util.IO
+import Sandbox.Util
+import Sandbox.Util.IO
 
 data IF = IsFibo | IsNotFibo deriving (Show)
 

@@ -1,5 +1,5 @@
-import Util.Alg
-import Util.IO
+import Sandbox.Util
+import Sandbox.Util.IO
 
 predLowerChar :: Char -> Char
 predLowerChar 'a' = 'a'
