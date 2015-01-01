@@ -1,3 +1,5 @@
+module Main where
+
 import Sandbox.Util.IO
 
 growCycle :: Integral a => a -> a -> a

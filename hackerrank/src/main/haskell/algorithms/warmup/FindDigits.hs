@@ -1,3 +1,5 @@
+module Main where
+
 import Data.Maybe
 import Sandbox.Util
 import Sandbox.Util.IO

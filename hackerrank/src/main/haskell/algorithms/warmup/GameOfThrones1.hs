@@ -1,3 +1,5 @@
+module Main where
+
 import Data.Hashable (Hashable)
 import qualified Data.HashMap as M
 

@@ -1,3 +1,5 @@
+module Main where
+
 import Data.Bits
 import Data.Char (intToDigit)
 import Data.Word (Word)

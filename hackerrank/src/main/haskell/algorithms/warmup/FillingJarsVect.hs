@@ -1,3 +1,5 @@
+module Main where
+
 import Control.Monad
 import Control.Monad.ST
 import qualified Data.Vector.Unboxed.Mutable as UM

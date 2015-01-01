@@ -1,3 +1,5 @@
+module Main where
+
 import qualified Data.List as L
 import Sandbox.Util.IO (readSeq)
 

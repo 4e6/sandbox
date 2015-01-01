@@ -1,3 +1,5 @@
+module Main where
+
 import Control.Monad
 import qualified Sandbox.Util.IO as U
 

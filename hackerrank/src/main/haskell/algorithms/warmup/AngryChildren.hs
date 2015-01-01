@@ -1,3 +1,5 @@
+module Main where
+
 import Control.Monad
 import Data.List (sort)
 import qualified Data.Sequence as S

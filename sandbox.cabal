@@ -15,6 +15,7 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      core/src/main/haskell
   build-depends:       base >=4.7 && <4.8
+                     , bytestring >=0.10 && <0.12
   exposed-modules:     Sandbox.Util, Sandbox.Util.IO
   default-language:    Haskell2010
 
@@ -43,6 +44,13 @@ executable MaximumSubarray
                      , bytestring >=0.10 && <0.11
   default-language:    Haskell2010
 
+-- Sorting
+
+executable InsertionSortPart1
+  main-is:             algorithms/sorting/InsertionSortPart1.hs
+  hs-source-dirs:      hackerrank/src/main/haskell
+  build-depends:       base >=4.7, sandbox
+  default-language:    Haskell2010
 -- Warmup
 
 executable AcmIcpcTeam

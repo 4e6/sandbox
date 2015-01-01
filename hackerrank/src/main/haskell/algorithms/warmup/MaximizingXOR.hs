@@ -1,3 +1,5 @@
+module Main where
+
 import Data.Bits
 
 maxXor :: Int -> Int -> Int

@@ -1,3 +1,5 @@
+module Main where
+
 import Sandbox.Util.IO
 
 countHandshakes :: Int -> Int

@@ -1,3 +1,5 @@
+module Main where
+
 import Control.Monad
 import Data.Foldable (foldl')
 import Numeric.LinearAlgebra.Data

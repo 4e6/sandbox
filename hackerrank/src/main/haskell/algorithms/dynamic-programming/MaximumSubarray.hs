@@ -1,3 +1,5 @@
+module Main where
+
 import Control.Monad
 import qualified Data.ByteString.Char8 as S
 import Data.Maybe (catMaybes)
