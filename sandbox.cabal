@@ -37,11 +37,19 @@ executable Handshake
 
 executable MaximumSubarray
   main-is:             algorithms/dynamic-programming/MaximumSubarray.hs
-
   ghc-prof-options:    -O2 -threaded -fprof-auto "-with-rtsopts=-N -p -s -h -i0.1"
   hs-source-dirs:      hackerrank/src/main/haskell
   build-depends:       base >=4.7 && <4.8
                      , bytestring >=0.10 && <0.11
+  default-language:    Haskell2010
+
+-- Graph Theory
+
+executable EvenTree
+  main-is:             algorithms/graph-theory/EvenTree.hs
+  hs-source-dirs:      hackerrank/src/main/haskell
+  build-depends:       base >=4.7
+                     , sandbox
   default-language:    Haskell2010
 
 -- Sorting
@@ -51,6 +59,7 @@ executable InsertionSortPart1
   hs-source-dirs:      hackerrank/src/main/haskell
   build-depends:       base >=4.7, sandbox
   default-language:    Haskell2010
+
 -- Warmup
 
 executable AcmIcpcTeam
