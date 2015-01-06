@@ -1,13 +1,15 @@
 module Sandbox.Util where
 
+import Data.List (subsequences)
+
 fibs :: Integral a => [a]
 fibs = fib_rec 0 1 where
-  fib_rec a b = a : (fib_rec b $ a + b)
+  fib_rec a b = a : fib_rec b (a+b)
 
 fibn :: Integral a => a -> a
 fibn 0 = 0
 fibn 1 = 1
-fibn n = (fibn $ n - 1) + (fibn $ n - 2)
+fibn n = fibn (n-1) + fibn (n-2)
 
 isFib :: Integral a => [a] -> a -> Bool
 isFib (f:fs) n =
@@ -18,16 +20,24 @@ digits 0 = []
 digits x = let (q, r) = quotRem x 10
            in r : digits q
 
+-- dual to 'digits'
+integral :: Integral a => [a] -> a
+integral xs = integral_ xs 0 0
+
+integral_ :: Integral a => [a] -> Int -> a -> a
+integral_ []     _ s = s
+integral_ (x:xs) i s = integral_ xs (i+1) (s + x*10^i)
+
 mid :: [a] -> Maybe a
 mid [] = Nothing
-mid xs = if even $ length xs then Nothing else Just $ xs !! (half $ length xs)
+mid xs = if even $ length xs then Nothing else Just $ xs !! half (length xs)
   where half x = quot x 2
 
 splitHalf :: [a] -> ([a], [a])
 splitHalf xs = splitAt (half $ length xs) xs
   where half x = quot x 2
 
-splitHalfEq :: [a] -> ([a], [a])
+splitHalfEq :: [a] -> ([a],[a])
 splitHalfEq s =
   let (l, r) = splitHalf s
       size = length s

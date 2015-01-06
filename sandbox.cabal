@@ -19,6 +19,14 @@ library
   exposed-modules:     Sandbox.Util, Sandbox.Util.IO
   default-language:    Haskell2010
 
+-- Ad Hoc
+
+executable Divisibility
+  main-is :            algorithms/ad-hoc/Divisibility.hs
+  hs-source-dirs:      hackerrank/src/main/haskell
+  build-depends:       base >=4.7, sandbox
+  default-language:    Haskell2010
+
 -- Combinatorics
 
 executable ConnectingTowns
