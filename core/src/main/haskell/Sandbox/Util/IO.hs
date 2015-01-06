@@ -24,6 +24,10 @@ readPair :: Read a => IO (a, a)
 readPair = fmap parse readSeq
   where parse (a:b:_) = (a, b)
 
+readPair3 :: Read a => IO (a,a,a)
+readPair3 = fmap parse readSeq
+  where parse (a:b:c:_) = (a,b,c)
+
 readSeqInt :: IO [Int]
 readSeqInt = fmap readInts' getLine where
   readInts' = map fst . mapMaybe BS.readInt . BS.words . BS.pack

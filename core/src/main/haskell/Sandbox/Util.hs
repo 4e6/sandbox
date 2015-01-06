@@ -1,7 +1,5 @@
 module Sandbox.Util where
 
-import Data.List (subsequences)
-
 fibs :: Integral a => [a]
 fibs = fib_rec 0 1 where
   fib_rec a b = a : fib_rec b (a+b)
@@ -27,6 +25,8 @@ integral xs = integral_ xs 0 0
 integral_ :: Integral a => [a] -> Int -> a -> a
 integral_ []     _ s = s
 integral_ (x:xs) i s = integral_ xs (i+1) (s + x*10^i)
+
+-- lists
 
 mid :: [a] -> Maybe a
 mid [] = Nothing
