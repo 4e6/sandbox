@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Generates hackerrank input sequence
+
+N=${1:-10}
+
+echo $N
+seq 1 $N
