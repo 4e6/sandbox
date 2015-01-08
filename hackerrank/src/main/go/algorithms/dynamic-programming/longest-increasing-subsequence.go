@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
 	"strconv"
 )
@@ -33,7 +34,7 @@ func readInt(bio *bufio.Reader) int {
 	return x
 }
 
-// longest increasing subsequence
+// O(n^2)
 func lis(D []int) []int {
 	L := make([][]int, len(D))
 
@@ -59,11 +60,51 @@ func lis(D []int) []int {
 	return lmax
 }
 
+// O(n log n)
+func lis1(X []int) (int, []int) {
+	N := len(X)
+	P := make([]int, N)
+	M := make([]int, N+1)
+	L := 0
+
+	for i := 0; i < N; i++ {
+		lo := 1
+		hi := L
+		for lo <= hi {
+			mid := int(math.Ceil(float64(lo+hi) / 2))
+			if X[M[mid]] < X[i] {
+				lo = mid+1
+			} else {
+				hi = mid-1
+			}
+		}
+
+		newL := lo
+
+		P[i] = M[newL-1]
+		M[newL] = i
+
+		if newL > L {
+			L = newL
+		}
+	}
+
+	S := make([]int, L)
+	k := M[L]
+	for i := L-1; i >= 0; i-- {
+		S[i] = X[k]
+		k = P[k]
+	}
+
+	return L, S
+}
+
 func main() {
 	//ints := []int{3, 2, 6, 4, 5, 1}
 
 	//fmt.Println(lis(ints))
 
 	xs := readInput()
-	fmt.Println(len(lis(xs)))
+	n, _ := lis1(xs)
+	fmt.Println(n)
 }
