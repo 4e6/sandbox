@@ -1,10 +1,12 @@
-EXECUTABLES = lic
-SRCDIR = hackerrank/src/main/go
+EXECUTABLES = algorithms/dynamic-programming/longest-common-subsequence \
+	      algorithms/dynamic-programming/longest-increasing-subsequence
+
+export GOPATH = $(CURDIR)/hackerrank
 
 all: $(EXECUTABLES)
 
-lic:
-	go build -o bin/lic $(SRCDIR)/algorithms/dynamic-programming/longest-increasing-subsequence.go
+$(EXECUTABLES):
+	go install main/go/$@
 
 clean:
-	rm bin/*
+	rm -r $(GOPATH)/bin $(GOPATH)/pkg

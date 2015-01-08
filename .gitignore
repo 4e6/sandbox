@@ -9,4 +9,6 @@
 # SBT
 target/
 
-/bin
+# GO
+pkg/
+bin/

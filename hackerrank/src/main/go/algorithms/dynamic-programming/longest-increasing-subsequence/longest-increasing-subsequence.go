@@ -1,38 +1,12 @@
 package main
 
 import (
+	"main/go/utils"
 	"bufio"
 	"fmt"
 	"math"
 	"os"
-	"strconv"
 )
-
-func readInput() []int {
-	var n int
-	bio := bufio.NewReader(os.Stdin)
-	n = readInt(bio)
-
-	xs := make([]int, n)
-
-	for i := 0; i < n; i++ {
-		xs[i] = readInt(bio)
-	}
-
-	return xs
-}
-
-func readInt(bio *bufio.Reader) int {
-	b, _ := bio.ReadString('\n')
-	if b[len(b)-1] == '\n' {
-		b = b[:len(b)-1]
-	}
-	x, err := strconv.Atoi(b)
-	if err != nil {
-		fmt.Println("strconv.Atoi", err)
-	}
-	return x
-}
 
 // O(n^2)
 func lis(D []int) []int {
@@ -99,11 +73,20 @@ func lis1(X []int) (int, []int) {
 	return L, S
 }
 
+func readInput() []int {
+	bio := bufio.NewReader(os.Stdin)
+	n, _ := utils.ReadInt(bio)
+
+	xs := make([]int, n)
+
+	for i := 0; i < n; i++ {
+		xs[i], _ = utils.ReadInt(bio)
+	}
+
+	return xs
+}
+
 func main() {
-	//ints := []int{3, 2, 6, 4, 5, 1}
-
-	//fmt.Println(lis(ints))
-
 	xs := readInput()
 	n, _ := lis1(xs)
 	fmt.Println(n)
