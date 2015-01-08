@@ -46,7 +46,7 @@ func ReadInt(bio *bufio.Reader) (int, error) {
 
 func ReadString(bio *bufio.Reader, delim byte) (string, error) {
 	s, err := bio.ReadString(delim)
-	l := len(s)-1
+	l := len(s) - 1
 	if s[l] == delim {
 		s = s[:l]
 	}

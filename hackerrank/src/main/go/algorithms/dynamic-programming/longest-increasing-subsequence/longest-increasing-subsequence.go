@@ -1,9 +1,9 @@
 package main
 
 import (
-	"main/go/utils"
 	"bufio"
 	"fmt"
+	"main/go/utils"
 	"math"
 	"os"
 )
@@ -47,9 +47,9 @@ func lis1(X []int) (int, []int) {
 		for lo <= hi {
 			mid := int(math.Ceil(float64(lo+hi) / 2))
 			if X[M[mid]] < X[i] {
-				lo = mid+1
+				lo = mid + 1
 			} else {
-				hi = mid-1
+				hi = mid - 1
 			}
 		}
 
@@ -65,7 +65,7 @@ func lis1(X []int) (int, []int) {
 
 	S := make([]int, L)
 	k := M[L]
-	for i := L-1; i >= 0; i-- {
+	for i := L - 1; i >= 0; i-- {
 		S[i] = X[k]
 		k = P[k]
 	}

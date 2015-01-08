@@ -1,9 +1,9 @@
 package main
 
 import (
-	"main/go/utils"
 	"bufio"
 	"fmt"
+	"main/go/utils"
 	"os"
 	"strings"
 )
