@@ -12,3 +12,6 @@ target/
 # GO
 pkg/
 bin/
+
+# Rust
+Cargo.lock
