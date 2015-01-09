@@ -1,0 +1,5 @@
+[package]
+
+name = "filpping-bits"
+version = "0.0.1"
+authors = ["Dmitry Bushev <bushevdv@gmail.com>"]
