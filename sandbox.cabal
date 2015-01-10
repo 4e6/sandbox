@@ -19,14 +19,6 @@ library
   exposed-modules:     Sandbox.Util, Sandbox.Util.IO
   default-language:    Haskell2010
 
--- Data Structures
-
-executable Divisibility
-  main-is :            algorithms/data-structures/Divisibility.hs
-  hs-source-dirs:      hackerrank/src/main/haskell
-  build-depends:       base >=4.7, sandbox
-  default-language:    Haskell2010
-
 -- Combinatorics
 
 executable ConnectingTowns
@@ -39,6 +31,17 @@ executable Handshake
   main-is:             algorithms/combinatorics/Handshake.hs
   hs-source-dirs:      hackerrank/src/main/haskell
   build-depends:       base >=4.7 && <4.8, sandbox
+  default-language:    Haskell2010
+
+-- Data Structures
+
+executable Divisibility
+  main-is :            algorithms/data-structures/Divisibility.hs
+  hs-source-dirs:      hackerrank/src/main/haskell
+  ghc-prof-options:    -O2 -threaded -fprof-auto "-with-rtsopts=-N -p -s -h -i0.1"
+  build-depends:       base >=4.7
+                     , containers >= 0.5.6
+                     , sandbox
   default-language:    Haskell2010
 
 -- Dynamic Programming
