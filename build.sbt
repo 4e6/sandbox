@@ -5,7 +5,7 @@ import scalariform.formatter.preferences._
 
 val commonSettings = Seq(
   version := "0.1-SNAPSHOT",
-  scalaVersion := "2.11.4",
+  scalaVersion := "2.11.6",
   scalacOptions ++= Seq(
     "-encoding", "UTF-8",
     "-feature",
@@ -33,10 +33,10 @@ lazy val core = project
   .settings(
     initialCommands in console := "import misc.examples._",
     libraryDependencies ++= Seq(
-      "com.chuusai"    %% "shapeless"   % "2.0.0",
-      "org.scalaz"     %% "scalaz-core" % "7.1.0",
-      "org.spire-math" %% "spire"       % "0.9.0",
-      "org.scalacheck" %% "scalacheck"  % "1.12.1" % "test"))
+      "com.chuusai"    %% "shapeless"   % "2.1.0",
+      "org.scalaz"     %% "scalaz-core" % "7.1.1",
+      "org.spire-math" %% "spire"       % "0.9.1",
+      "org.scalacheck" %% "scalacheck"  % "1.12.2" % "test"))
 
 lazy val benchmark = project
   .dependsOn(core)
