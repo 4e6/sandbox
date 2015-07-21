@@ -1,3 +1,5 @@
+-- Algorithms/Bit Manipulation/Maximazing XOR
+
 module Main where
 
 import Data.Bits

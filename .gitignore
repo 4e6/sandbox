@@ -2,9 +2,9 @@
 /.dir-locals.el
 
 # Cabal
-/.cabal-sandbox/
-/cabal.sandbox.config
-/dist/
+.cabal-sandbox/
+cabal.sandbox.config
+dist/
 
 # SBT
 target/

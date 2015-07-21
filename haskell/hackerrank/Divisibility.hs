@@ -1,3 +1,5 @@
+-- Data Structures/Advanced/Divisibility
+
 module Main (main) where
 
 import Control.Monad.ST

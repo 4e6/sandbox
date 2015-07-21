@@ -1,3 +1,5 @@
+-- Algorightms/Greedy/Max Min
+
 module Main where
 
 import Control.Monad

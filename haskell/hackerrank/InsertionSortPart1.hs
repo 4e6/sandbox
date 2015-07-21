@@ -1,3 +1,5 @@
+-- Algorithms/Sorting/Insertion Sort - Part 1
+
 module Main where
 
 import Control.Monad

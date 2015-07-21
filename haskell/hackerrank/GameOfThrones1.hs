@@ -1,3 +1,5 @@
+-- Algorithms/Strings/Game of Thrones - I
+
 module Main where
 
 import Data.Hashable (Hashable)

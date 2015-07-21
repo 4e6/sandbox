@@ -1,3 +1,5 @@
+-- Algorithms/Strings/Alternating Characters
+
 module Main where
 
 import Sandbox.Util.IO

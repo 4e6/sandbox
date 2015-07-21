@@ -1,3 +1,5 @@
+-- Mathematics/Fundamentals/Connecting Towns
+
 module Main where
 
 import Control.Monad

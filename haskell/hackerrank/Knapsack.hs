@@ -1,3 +1,5 @@
+-- Algorithms/Dynamic Programming/Knapsack
+
 module Main (main) where
 
 import Control.Monad as M

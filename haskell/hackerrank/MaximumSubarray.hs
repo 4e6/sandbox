@@ -1,3 +1,5 @@
+-- Algorithms/Dynamic Programming/The Maximum Subarray
+
 module Main where
 
 import Control.Monad
