@@ -46,6 +46,13 @@ executable AngryChildren
                      , hmatrix >=0.16 && <0.17
   default-language:    Haskell2010
 
+executable BdayGift
+  main-is:             hackerrank/BdayGift.hs
+  build-depends:       sandbox
+                     , base >=4.8 && <4.9
+                     , bytestring >=0.10 && <0.12
+  default-language:    Haskell2010
+
 executable ConnectingTowns
   main-is:             hackerrank/ConnectingTowns.hs
   build-depends:       sandbox
