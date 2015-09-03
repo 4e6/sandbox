@@ -5,7 +5,7 @@ import scalariform.formatter.preferences._
 
 val commonSettings = Seq(
   version := "0.1-SNAPSHOT",
-  scalaVersion := "2.11.6",
+  scalaVersion := "2.11.7",
   scalacOptions ++= Seq(
     "-encoding", "UTF-8",
     "-feature",
@@ -28,24 +28,20 @@ val noPublishingSettings = Seq(
 // projects
 
 lazy val core = project
-  .settings(commonSettings: _*)
-  .settings(formattingSettings: _*)
+  .settings(commonSettings, formattingSettings)
   .settings(
     initialCommands in console := "import misc.examples._",
     libraryDependencies ++= Seq(
-      "com.chuusai"    %% "shapeless"   % "2.1.0",
-      "org.scalaz"     %% "scalaz-core" % "7.1.1",
-      "org.spire-math" %% "spire"       % "0.9.1",
-      "org.scalacheck" %% "scalacheck"  % "1.12.2" % "test"))
+      "com.chuusai"    %% "shapeless"   % "2.2.5",
+      "org.scalaz"     %% "scalaz-core" % "7.1.3",
+      "org.spire-math" %% "spire"       % "0.10.1",
+      "org.scalacheck" %% "scalacheck"  % "1.12.4" % Test))
 
 lazy val benchmark = project
   .dependsOn(core)
-  .settings(commonSettings: _*)
-  .settings(formattingSettings: _*)
-  .settings(jmhSettings: _*)
-  .settings(noPublishingSettings: _*)
+  .enablePlugins(JmhPlugin)
+  .settings(commonSettings, formattingSettings, noPublishingSettings)
 
 lazy val root = Project("sandbox", file("."))
   .aggregate(core, benchmark)
-  .settings(commonSettings: _*)
-  .settings(noPublishingSettings: _*)
+  .settings(commonSettings, noPublishingSettings)
