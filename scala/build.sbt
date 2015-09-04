@@ -30,7 +30,9 @@ val noPublishingSettings = Seq(
 lazy val core = project
   .settings(commonSettings, formattingSettings)
   .settings(
-    initialCommands in console := "import misc.examples._",
+    initialCommands in console :=
+      """import misc.examples._
+         import misc.trees._""",
     libraryDependencies ++= Seq(
       "com.chuusai"    %% "shapeless"   % "2.2.5",
       "org.scalaz"     %% "scalaz-core" % "7.1.3",
