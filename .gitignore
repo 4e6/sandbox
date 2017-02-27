@@ -9,6 +9,9 @@
 cabal.sandbox.config
 dist/
 
+# Idris
+*.ibc
+
 # SBT
 target/
 
