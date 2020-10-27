@@ -6,12 +6,12 @@ import Control.Monad
 import Data.List (sort)
 import qualified Data.Sequence as S
 import qualified Data.Array as A
-import Numeric.LinearAlgebra.Data
+import qualified Data.Vector.Primitive as V
 
-sliding :: Int -> Int -> Int -> Vector Double -> [(Double, Double)]
-sliding l r n v
+slidingV :: Int -> Int -> Int -> V.Vector Double -> [(Double, Double)]
+slidingV l r n v
   | r == n    = []
-  | otherwise = (v ! l, v ! r) : sliding (l+1) (r+1) n v
+  | otherwise = (v V.! l, v V.! r) : slidingV (l+1) (r+1) n v
 
 slidingS :: Int -> Int -> Int -> S.Seq Int -> [(Int, Int)]
 slidingS l r n s
@@ -26,9 +26,9 @@ slidingA l r n a
 distance :: Num a => a -> a -> a
 distance x y = y - x
 
-knn :: Int -> Int -> [Double] -> [Int]
-knn n k xs = let v = sortVector $ fromList xs
-             in map (truncate . uncurry distance) $ sliding 0 (k-1) n v
+knnV :: Int -> Int -> [Double] -> [Int]
+knnV n k xs = let v = V.fromList $ sort xs
+             in map (truncate . uncurry distance) $ slidingV 0 (k-1) n v
 
 knnS :: Int -> Int -> [Int] -> [Int]
 knnS n k xs = let ss = S.fromList $ sort xs
@@ -43,5 +43,5 @@ main = do
   n  <- readLn
   k  <- readLn
   xs <- replicateM n readLn
-  let ds = knn n k xs
+  let ds = knnV n k xs
   print $ minimum ds

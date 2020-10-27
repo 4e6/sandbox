@@ -5,9 +5,8 @@
 /.dir-locals.el
 
 # Cabal
-.cabal-sandbox/
-cabal.sandbox.config
 dist/
+dist-newstyle/
 
 # Idris
 *.ibc

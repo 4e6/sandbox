@@ -3,7 +3,7 @@
 module Main where
 
 import Data.Hashable (Hashable)
-import qualified Data.HashMap as M
+import qualified Data.HashMap.Strict as M
 
 data Answer = YES | NO deriving (Show)
 
@@ -11,10 +11,10 @@ mkAnswer :: Bool -> Answer
 mkAnswer True  = YES
 mkAnswer False = NO
 
-freqMap :: (Hashable a, Ord a) => [a] -> M.Map a Int
+freqMap :: (Hashable a, Ord a) => [a] -> M.HashMap a Int
 freqMap xs = freqMap_ xs M.empty
 
-freqMap_ :: (Hashable a, Ord a) => [a] -> M.Map a Int -> M.Map a Int
+freqMap_ :: (Hashable a, Ord a) => [a] -> M.HashMap a Int -> M.HashMap a Int
 freqMap_ []     m = m
 freqMap_ (x:xs) m = freqMap_ xs $ M.insertWith (+) x 1 m
 

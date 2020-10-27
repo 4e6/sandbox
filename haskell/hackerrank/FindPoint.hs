@@ -2,7 +2,6 @@
 
 module Main where
 
-import Data.Tuple.Curry (uncurryN)
 import Sandbox.Util.IO
 
 symmetryPoint :: Num a => a -> a -> a -> a -> (a, a)
@@ -16,5 +15,5 @@ printPair (x, y) = putStrLn $ show x ++ " " ++ show y
 main :: IO ()
 main = do
   ps <- readInput' readPair4
-  let rs = map (uncurryN symmetryPoint) ps
+  let rs = map (\(a, b, c, d) -> symmetryPoint a b c d) ps
   sequence_ $ map printPair rs
