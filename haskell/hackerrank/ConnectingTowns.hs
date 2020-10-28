@@ -2,18 +2,7 @@
 
 module Main where
 
-import Control.Monad
-import qualified Sandbox.Util.IO as U
-
-readCase' :: IO [Int]
-readCase' = getLine >> U.readSeq
-
-readCases :: Int -> IO [[Int]]
-readCases n = replicateM n readCase'
+import qualified HackerRank.Mathematics.ConnectingTowns as M
 
 main :: IO ()
-main = do
-  t  <- readLn
-  xs <- readCases t
-  let cs = map (flip mod 1234567 . product) xs
-  sequence_ $ map print cs
+main = M.main

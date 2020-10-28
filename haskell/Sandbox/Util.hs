@@ -10,6 +10,7 @@ fibn 1 = 1
 fibn n = fibn (n-1) + fibn (n-2)
 
 isFib :: Integral a => [a] -> a -> Bool
+isFib []     _ = False
 isFib (f:fs) n =
   if n > f then isFib fs n else n == f
 

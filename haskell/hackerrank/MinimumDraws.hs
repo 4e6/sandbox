@@ -2,10 +2,7 @@
 
 module Main where
 
-import Sandbox.Util.IO (readInput)
+import qualified HackerRank.Mathematics.MinimumDraws as M
 
 main :: IO ()
-main = do
-  ps <- readInput
-  let rs = map (+1) ps
-  sequence_ $ map print rs
+main = M.main

@@ -1,3 +1,4 @@
+{-# LANGUAGE FlexibleContexts #-}
 module Sandbox.Util.IO where
 
 import Control.Monad
@@ -23,17 +24,23 @@ readSeq :: Read a => IO [a]
 readSeq = fmap (parse . words) getLine
   where parse = map read
 
-readPair :: Read a => IO (a, a)
-readPair = fmap parse readSeq
-  where parse (a:b:_) = (a, b)
+readPair :: (Show a, Read a) => IO (a, a)
+readPair = parse =<< readSeq
+  where
+    parse (a:b:_) = pure (a, b)
+    parse a       = fail ("Unexpected input: " ++ show a)
 
-readPair3 :: Read a => IO (a,a,a)
-readPair3 = fmap parse readSeq
-  where parse (a:b:c:_) = (a,b,c)
+readPair3 :: (Show a, Read a) => IO (a,a,a)
+readPair3 = parse =<< readSeq
+  where
+    parse (a:b:c:_) = pure (a,b,c)
+    parse a         = fail ("Unexpected input: " ++ show a)
 
-readPair4 :: Read a => IO (a,a,a,a)
-readPair4 = fmap parse readSeq
-  where parse (a:b:c:d:_) = (a,b,c,d)
+readPair4 :: (Show a, Read a) => IO (a,a,a,a)
+readPair4 = parse =<< readSeq
+  where
+    parse (a:b:c:d:_) = pure (a,b,c,d)
+    parse a           = fail ("Unexpected input: " ++ show a)
 
 readSeqInt :: IO [Int]
 readSeqInt = fmap readInts' getLine where
