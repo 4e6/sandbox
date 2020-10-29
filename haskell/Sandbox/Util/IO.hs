@@ -1,9 +1,12 @@
 {-# LANGUAGE FlexibleContexts #-}
 module Sandbox.Util.IO where
 
-import Control.Monad
+import Control.Monad (replicateM)
 import qualified Data.ByteString.Char8 as BS
 import Data.Maybe (mapMaybe)
+
+readLine :: Read a => IO a
+readLine = read <$> getLine
 
 readLines :: Read a => Int -> IO [a]
 readLines n = replicateM n readLn

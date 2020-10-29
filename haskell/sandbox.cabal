@@ -44,6 +44,8 @@ common deps
                      , HackerRank.Mathematics.IsFibo
                      , HackerRank.Mathematics.MinimumDraws
                      , HackerRank.Probability.BdayGift
+                     , HackerRank.Tutorials.Statistics.Day0
+                     , Sandbox.Data.Vector.Unboxed.Extra
                      , Sandbox.Util
                      , Sandbox.Util.IO
   default-language:    Haskell2010
@@ -138,3 +140,9 @@ executable MinimumDraws
 executable UtopianTree
   import:              deps
   main-is:             hackerrank/UtopianTree.hs
+
+-- tutorials
+
+executable day0
+  import:              deps
+  main-is:             hackerrank/tutorials/statistics/Day0.hs
