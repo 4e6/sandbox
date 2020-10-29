@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 module Sandbox.Util.IO where
 
-import Control.Monad (replicateM)
+import Control.Monad
 import qualified Data.ByteString.Char8 as BS
 import Data.Maybe (mapMaybe)
 

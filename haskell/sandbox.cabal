@@ -45,6 +45,7 @@ common deps
                      , HackerRank.Mathematics.MinimumDraws
                      , HackerRank.Probability.BdayGift
                      , HackerRank.Tutorials.Statistics.Day0
+                     , HackerRank.Tutorials.Statistics.Day1
                      , Sandbox.Data.Vector.Unboxed.Extra
                      , Sandbox.Util
                      , Sandbox.Util.IO
@@ -143,6 +144,12 @@ executable UtopianTree
 
 -- tutorials
 
+-- statistics
+
 executable day0
   import:              deps
   main-is:             hackerrank/tutorials/statistics/Day0.hs
+
+executable day1
+  import:              deps
+  main-is:             hackerrank/tutorials/statistics/Day1.hs

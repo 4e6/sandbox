@@ -11,8 +11,6 @@ main :: IO ()
 main = do
   _ <- getLine
   xs <- V.fromList <$> U.readSeq @Int
-  print xs
-  print (EV.quicksort xs)
   P.printf "%.1f\n"(EV.mean @Double xs)
   P.printf "%.1f\n" (EV.median @Double xs)
   print (EV.mode xs)

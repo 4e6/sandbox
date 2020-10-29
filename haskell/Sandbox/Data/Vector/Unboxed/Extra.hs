@@ -1,5 +1,4 @@
 {-# language TypeApplications #-}
-{-# language ViewPatterns #-}
 module Sandbox.Data.Vector.Unboxed.Extra where
 
 import qualified Data.Vector.Unboxed as V
@@ -36,7 +35,16 @@ meanWeighted xs ws = realToFrac weightedSum / realToFrac weight
 -- Found by ordering all data points and picking out the one in the middle, or
 -- if there are two middle numbers, taking the mean of those two numbers.
 median :: (Fractional b, V.Unbox a, Real a) => V.Vector a -> b
-median (quicksort -> xs)
+median = median' . quicksort
+
+-- | The middle number.
+--
+-- !!! Prerequisite unchecked: Vector is sorted.
+--
+-- Found by ordering all data points and picking out the one in the middle, or
+-- if there are two middle numbers, taking the mean of those two numbers.
+median' :: (Fractional b, V.Unbox a, Real a) => V.Vector a -> b
+median' xs
   | even (V.length xs) = realToFrac ((xs V.! (middle-1)) + xs V.! middle) / 2
   | otherwise          = realToFrac (xs V.! middle)
     where
@@ -55,3 +63,11 @@ mode xs = fst $ M.foldlWithKey' makeMode (hd, 0) occurrences
       | i > mi    = (a, i)
       | i == mi   = (min a ma, i)
       | otherwise = (ma, mi)
+
+-- | Standard deviation
+std :: (Fractional b, V.Unbox a, Real a) => V.Vector a -> b
+std xs = realToFrac (sqrt (squaredDist / (fromIntegral size)))
+  where
+    size = V.length xs
+    mean' = mean xs
+    squaredDist = V.foldl' (\a x -> a + (((realToFrac x) - mean') ^^ (2::Int))) 0 xs
