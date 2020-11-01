@@ -46,7 +46,10 @@ common deps
                      , HackerRank.Probability.BdayGift
                      , HackerRank.Tutorials.Statistics.Day0
                      , HackerRank.Tutorials.Statistics.Day1
+                     , HackerRank.Tutorials.Statistics.Day4
                      , Sandbox.Data.Vector.Unboxed.Extra
+                     , Sandbox.Number.Extra
+                     , Sandbox.Statistics
                      , Sandbox.Util
                      , Sandbox.Util.IO
   default-language:    Haskell2010
@@ -153,3 +156,7 @@ executable day0
 executable day1
   import:              deps
   main-is:             hackerrank/tutorials/statistics/Day1.hs
+
+executable day4
+  import:              deps
+  main-is:             hackerrank/tutorials/statistics/Day4.hs
