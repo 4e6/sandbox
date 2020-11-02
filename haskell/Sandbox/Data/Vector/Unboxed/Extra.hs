@@ -18,8 +18,8 @@ quicksort xs
 -- | The average number.
 --
 -- The sum of the values divided by the number of values.
-mean :: (Fractional b, V.Unbox a, Real a) => V.Vector a -> b
-mean xs = (realToFrac (V.sum xs)) / (fromIntegral (V.length xs))
+mean :: (V.Unbox a, Real a) => V.Vector a -> Double
+mean xs = (realToFrac (V.sum xs) / (fromIntegral (V.length xs)))
 
 -- | Weighted mean
 --

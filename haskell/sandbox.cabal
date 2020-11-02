@@ -47,6 +47,7 @@ common deps
                      , HackerRank.Tutorials.Statistics.Day0
                      , HackerRank.Tutorials.Statistics.Day1
                      , HackerRank.Tutorials.Statistics.Day4
+                     , HackerRank.Tutorials.Statistics.Day5
                      , Sandbox.Data.Vector.Unboxed.Extra
                      , Sandbox.Number.Extra
                      , Sandbox.Statistics
@@ -160,3 +161,7 @@ executable day1
 executable day4
   import:              deps
   main-is:             hackerrank/tutorials/statistics/Day4.hs
+
+executable day5
+  import:              deps
+  main-is:             hackerrank/tutorials/statistics/Day5.hs

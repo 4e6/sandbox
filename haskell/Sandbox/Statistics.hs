@@ -37,4 +37,4 @@ geometric x n p = (1-p) ^ (n-x) * p
 -- * `k` is the actual number of successes that occur in a specified region.
 -- * `l` is the average number of successes that occur in a specified region.
 poisson :: (Floating b, Integral a) => a -> b -> b
-poisson k l = (l ^ k) * ((exp 1) ** (-l)) / fromIntegral (N.fact k)
+poisson k l = (l ^ k) * exp (-l) / fromIntegral (N.fact k)
