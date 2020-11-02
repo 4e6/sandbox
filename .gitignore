@@ -20,3 +20,6 @@ bin/
 
 # Rust
 Cargo.lock
+
+# Enso
+.enso/

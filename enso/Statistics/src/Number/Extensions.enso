@@ -1,0 +1,47 @@
+from Base import all
+
+polyglot java import java.lang.Math
+polyglot java import java.math.BigDecimal
+polyglot java import java.math.BigInteger
+
+Number.parse : Text -> Number
+Number.parse text =
+    big_decimal = BigDecimal.new [text].to_array
+    # TODO: should work without that
+    big_decimal.doubleValue []
+
+Number.parse_integer : Text -> Integer
+Number.parse_integer text =
+    big_integer = BigInteger.new [text].to_array
+    # TODO: should work without that
+    big_integer.longValueExact []
+
+## Quotient of a and b, removing fractional parts.
+Number.// : Number -> Integer
+Number.// divisor = Math.floorDiv [this, divisor]
+
+## Exponentiation.
+
+   this number raised to the power of that number.
+Number.** : Number -> Number
+Number.** that = Math.pow [this, that]
+
+## e raised to the power of this number, where e is the base of the natural
+   logarithm.
+Number.exponent : Number
+Number.exponent = Math.exp [this]
+
+## e raised to the power of this number, where e is the base of the natural
+   logarithm.
+Number.exp : Number
+Number.exp = this.exponent
+
+## Factorial
+Integer.factorial : Integer
+Integer.factorial =
+    go s a = if a == 0 then s else @Tail_Call go s*a a-1
+    to 1 this
+
+## Factorial
+Integer.!! : Integer
+Integer.!! = this.factorial

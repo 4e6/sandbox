@@ -1,0 +1,96 @@
+from Base import all
+
+import Statistics.Number.Extensions
+
+## The sum of values.
+Vector.sum : Number
+Vector.sum = this.fold 0 (+)
+
+## The average number.
+
+   The sum of the values divided by the number of values.
+Vector.mean : Number
+Vector.mean = this.sum / this.length
+
+## Weighted mean
+
+   The weighted sum of the values divided by the number of values.
+Vector.mean_weighted : Vector -> Number
+Vector.mean_weighted weights =
+    weighted_sum = this.zip weights (*) . sum
+    IO.println weighted_sum
+    weighted_sum / weights.length
+
+## The middle number.
+
+   Found by ordering all data points and picking out the one in the middle, or
+   if there are two middle numbers, taking the mean of those two numbers.
+Vector.median : Number
+Vector.median = this.quick_sort.median'
+
+## The middle number.
+
+   ! Prerequisite unchecked: Vector is sorted.
+
+   Found by ordering all data points and picking out the one in the middle, or
+   if there are two middle numbers, taking the mean of those two numbers.
+Vector.median' : Number
+Vector.median' =
+    size = this.length
+    middle = size // 2
+    if size % 2 == 0 then [this.at middle-1, this.at middle].mean else
+        this.at size//2
+
+Vector.quick_sort : Vector
+Vector.quick_sort =
+    if this.length == 0 then this else
+        head = this.at 0
+        tail = this.take_right (this.length - 1)
+        left_sorted = tail.filter (ix -> ix <= head) . quick_sort
+        right_sorted = tail.filter (ix -> ix > head) . quick_sort
+        left_sorted + [head] + right_sorted
+
+## The value that appears most often.
+
+   If there are several values that appear the same number of times, take the
+   smallest of them.
+Vector.mode : Number
+Vector.mode =
+    make_map map ix =
+        occurrences = map.get ix . catch <| case _ of
+            Map.No_Value_For_Key _ -> 0
+        map.insert ix occurrences+1
+    mode_vector = this.fold Map.empty make_map . to_vector
+    mode_head = mode_vector.at 0
+    mode_tail = mode_vector.take_right mode_vector.length-1
+    make_mode acc ix =
+        mode = acc.at 0
+        count = acc.at 1
+        imode = ix.at 0
+        icount = ix.at 1
+        if icount > count then ix else
+            if icount == count then [min mode imode, count] else acc
+    mode_pair = mode_tail.fold mode_head make_mode
+    mode_pair.at 0
+
+## Compute the standard deviation.
+
+   Returns the standard deviation, a measure of the spread of a distribution, of
+   the array elements.
+Vector.std : Number
+Vector.std =
+    size = this.length
+    mean' = this.mean
+    squared_dist a b = (a - b) ** 2
+    (this.fold 0 (s -> a -> s + (squared_dist a mean')) / size).sqrt
+
+## Calculate first, second and third quartiles.
+
+   https://en.wikipedia.org/wiki/Quartile#Method_1
+Vector.quartiles :: Vector
+Vector.quartiles =
+    size = this.length
+    middle = size // 2
+    this_sorted = this.quick_sort
+    if size % 2 == 0 then [this_sorted.take middle . median', this_sorted.median', this_sorted.drop middle . median'] else
+        [this_sorted.take middle . median', this_sorted.at middle, this_sorted.drop middle+1 . median']

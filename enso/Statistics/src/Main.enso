@@ -1,0 +1,15 @@
+from Base import all
+
+import Statistics.Number.Extensions
+import Statistics.Vector.Extensions
+
+## Read a vector from space-separated text.
+read_vector : Text -> Vector
+read_vector text = text.split_at " " . map Number.parse_integer
+
+main =
+    n = Number.parse_integer IO.readLn
+    input = here.read_vector IO.readLn
+    if not input.length==n then Panic.throw "Invalid input"
+    IO.println input
+    IO.println input.quartiles
