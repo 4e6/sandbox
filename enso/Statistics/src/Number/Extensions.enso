@@ -12,18 +12,18 @@ Number.parse_integer text = Long.parseLong [text]
 
 ## Quotient of a and b, removing fractional parts.
 Number.// : Number -> Integer
-Number.// divisor = Math.floorDiv [this, divisor]
+Number.// divisor = Math.floorDiv [this.to_decimal, divisor.to_decimal]
 
 ## Exponentiation.
 
    this number raised to the power of that number.
 Number.** : Number -> Number
-Number.** that = Math.pow [this, that]
+Number.** that = Math.pow [this.to_decimal, that.to_decimal]
 
 ## e raised to the power of this number, where e is the base of the natural
    logarithm.
 Number.exponent : Number
-Number.exponent = Math.exp [this]
+Number.exponent = Math.exp [this.to_decimal]
 
 ## e raised to the power of this number, where e is the base of the natural
    logarithm.
